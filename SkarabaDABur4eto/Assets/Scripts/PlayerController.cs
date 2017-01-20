@@ -54,19 +54,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(!isGrounded)
-        {
-            Debug.Log("Am not grounded and colliding B|.");
-            foreach(ContactPoint2D contact in collision.contacts)
-            {
-                Debug.DrawLine(contact.point, contact.normal, Color.green);
-            }
-            //this.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionX;
-        }
-    }
-
     private void Jump()
     {
         this.GetComponent<Rigidbody2D>().velocity = new Vector2(this.GetComponent<Rigidbody2D>().velocity.x, jumpHeight);

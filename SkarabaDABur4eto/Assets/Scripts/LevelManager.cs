@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    [SerializeField]
-    GameObject currentCheckPoint;
+    public GameObject currentCheckPoint;
 
     private PlayerController playerController;
 
