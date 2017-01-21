@@ -5,6 +5,8 @@ using UnityEngine;
 public class TestMats : MonoBehaviour {
 
   public GameObject VibInstance;
+  public GameObject resInstance;
+  public GameObject resInstance2;
 	// Use this for initialization
 	void Start () {
 		
@@ -16,5 +18,11 @@ public class TestMats : MonoBehaviour {
     if(Input.GetKeyDown(KeyCode.V)) {
       VibInstance.GetComponent<Vibranium>().HitObject();
     }
-	}
+    if(Input.GetKeyDown(KeyCode.R)) {
+      resInstance.GetComponent<TripleResonance>().HitObject();
+    }
+    if (Input.GetKeyDown(KeyCode.E)) {
+      resInstance2.GetComponent<TripleResonance>().HitObject();
+    }
+  }
 }

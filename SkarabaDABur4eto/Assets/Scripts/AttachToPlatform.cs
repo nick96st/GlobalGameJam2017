@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class blockBehaviour : MonoBehaviour {
+public class AttachToPlatform : MonoBehaviour {
     public Rigidbody2D myrigidbody2D;
     // Use this for initialization
     void Start () {
