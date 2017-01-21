@@ -11,7 +11,18 @@ public class DestroyWaves : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Environment"))
+        if (collision.gameObject.CompareTag("Environment"))
+        {
+            collision.gameObject.GetComponent<GameBlockMatI>().HitObject();
+            Destroy(this.gameObject);
+        }
+        else if (collision.gameObject.CompareTag("Moveable"))
+        {
+            Destroy(this.gameObject);
+
+
+        }
+        else if (collision.gameObject.CompareTag("mPlatform"))
         {
             collision.gameObject.GetComponent<GameBlockMatI>().HitObject();
             Destroy(this.gameObject);

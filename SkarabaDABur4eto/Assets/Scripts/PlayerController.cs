@@ -99,4 +99,18 @@ public class PlayerController : MonoBehaviour
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
     }
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.transform.tag == "mPlatform")
+        {
+            transform.parent = other.transform;
+        }
+    }
+    void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.transform.tag == "mPlatform")
+        {
+            transform.parent = null;
+        }
+    }
 }
