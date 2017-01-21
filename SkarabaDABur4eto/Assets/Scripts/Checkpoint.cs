@@ -18,6 +18,7 @@ public class Checkpoint : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             levelManager.currentCheckPoint = this.gameObject;
+            Debug.Log("Activated Checkpoint: " + this.GetComponent<Transform>().position);
         }
     }
 }

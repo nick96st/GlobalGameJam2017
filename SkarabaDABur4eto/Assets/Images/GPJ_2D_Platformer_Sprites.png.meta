@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 879633b467ab5ed4d949ec6c704e680d
-timeCreated: 1484951053
+timeCreated: 1484955615
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -11,6 +11,7 @@ TextureImporter:
     21300008: Player_move2
     21300010: Life
     21300012: StagePortal
+    21300014: Weapon
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -162,6 +163,19 @@ TextureImporter:
         y: 48
         width: 19
         height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Weapon
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 101
+        width: 9
+        height: 5
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

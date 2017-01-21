@@ -19,6 +19,9 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
     private bool doubleJumped;
 
+    [SerializeField]
+    Transform firePoint;    
+
     private void Update()
     {
         CheckForGroundCollision();
@@ -28,14 +31,10 @@ public class PlayerController : MonoBehaviour
     private void MovePlayer()
     {
         if (isGrounded)
-        {
             doubleJumped = false;
-        }
 
         if (Input.GetKeyDown(KeyCode.W) && isGrounded)
-        {
             Jump();
-        }
 
         if (Input.GetKeyDown(KeyCode.W) && !doubleJumped && !isGrounded)
         {
@@ -44,14 +43,10 @@ public class PlayerController : MonoBehaviour
         }
 
         if (Input.GetKey(KeyCode.D))
-        {
             this.GetComponent<Rigidbody2D>().velocity = new Vector2(moveSpeed, this.GetComponent<Rigidbody2D>().velocity.y);
-        }
 
         if (Input.GetKey(KeyCode.A))
-        {
             this.GetComponent<Rigidbody2D>().velocity = new Vector2(-moveSpeed, this.GetComponent<Rigidbody2D>().velocity.y);
-        }
     }
 
     private void Jump()

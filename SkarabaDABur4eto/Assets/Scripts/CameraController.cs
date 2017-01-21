@@ -6,13 +6,29 @@ public class CameraController : MonoBehaviour
 {
     [SerializeField]
     Transform target;
+
     [SerializeField]
     float cameraSpeed;
 
-    void FixedUpdate ()
+    public bool isFollowing = true;
+
+    [SerializeField]
+    float xOffset;
+    [SerializeField]
+    float yOffset;
+
+    private void Start()
     {
-        this.GetComponent<Transform>().position = Vector3.Lerp(this.GetComponent<Transform>().position, 
-            new Vector3(target.position.x, target.position.y, this.GetComponent<Transform>().position.z), 
-            cameraSpeed * Time.deltaTime);
+        isFollowing = true;
+    } 
+
+    private void FixedUpdate()
+    {
+        if (isFollowing)
+        {
+            this.GetComponent<Transform>().position = Vector3.Lerp(this.GetComponent<Transform>().position,
+                new Vector3(target.position.x + xOffset, target.position.y + yOffset, this.GetComponent<Transform>().position.z),
+                cameraSpeed * Time.deltaTime);
+        }
 	}
 }
