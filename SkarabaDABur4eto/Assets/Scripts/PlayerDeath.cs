@@ -14,6 +14,9 @@ public class PlayerDeath : MonoBehaviour
     {
         if(FindObjectOfType<LevelManager>() != null)
             levelManager = FindObjectOfType<LevelManager>();
+
+        if (FindObjectOfType<Statistic>() != null)
+            statistic = FindObjectOfType<Statistic>();
 	}
 	
 	void Update ()
@@ -26,7 +29,7 @@ public class PlayerDeath : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             levelManager.RespawnPlayer();
-			statistic.addDeath ();
+			statistic.addDeath();
         }
     }
 }
