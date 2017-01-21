@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 879633b467ab5ed4d949ec6c704e680d
-timeCreated: 1484965447
+timeCreated: 1484972631
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -90,11 +90,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 112
+        y: 80
         width: 16
-        height: 12
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        height: 16
+      alignment: 9
+      pivot: {x: 0.48335418, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -102,12 +102,12 @@ TextureImporter:
       name: Ground
       rect:
         serializedVersion: 2
-        x: 0
-        y: 80
+        x: 32
+        y: 111
         width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        height: 15
+      alignment: 9
+      pivot: {x: 0.5331671, y: 0.4778881}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
