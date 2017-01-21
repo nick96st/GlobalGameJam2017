@@ -9,13 +9,19 @@ public class Statistic : MonoBehaviour {
 	[SerializeField]
 	int starCounter;
 	[SerializeField]
+	Text starCounterText;
+
+	[SerializeField]
 	int deathCounter;
 	[SerializeField]
-	Text timerText;
+	Text deathCounterText;
+
 	[SerializeField]
 	float secondsCounter;
 	[SerializeField]
 	int minuteCounter;
+	[SerializeField]
+	Text timerText;
 
 	// Use this for initialization
 	void Start () {
@@ -29,19 +35,33 @@ public class Statistic : MonoBehaviour {
 
 	public void starCollected() {
 		starCounter++;
+		starCounterText.text = "Stars Collected: " + starCounter;
 	}
 		
 	public void addDeath() {
 		deathCounter++;
+		deathCounterText.text = "Lives Wasted: " + deathCounter;
 	}
 
 	public void UpdateTimerUI() {
 		secondsCounter += Time.deltaTime;
-		timerText.text = minuteCounter + "m:" + (int)secondsCounter + "s";
 		if (secondsCounter >= 60) {
 			secondsCounter = 0;
 			minuteCounter++;
 		}
+		timerText.text = "Time: ";
+
+		if (minuteCounter < 10) {
+			timerText.text += "0";
+		}
+
+		timerText.text += minuteCounter + ":";
+
+		if (secondsCounter < 10) {
+			timerText.text += "0";
+		}
+		timerText.text += (int)secondsCounter;
+
 	}
 		
 }
