@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Movement : MonoBehaviour {
+public class PlatformMovement : MonoBehaviour {
 
     private GameObject platform;
     public float moveSpeed;
