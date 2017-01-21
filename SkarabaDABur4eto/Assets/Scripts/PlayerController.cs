@@ -30,12 +30,27 @@ public class PlayerController : MonoBehaviour
     bool isDabbing;
     float speed;
     float height;
+    
+    private Rigidbody2D rigidbody;
+
+    private void Start()
+    {
+        rigidbody = this.gameObject.GetComponent<Rigidbody2D>();
+    }
 
     private void Update()
     {
         CheckForGroundCollision();
         MovePlayer();
     } 
+
+    private void FixedUpdate()
+    {
+        if (rigidbody.velocity.y < (-1.3f)*jumpHeight)
+        {
+            rigidbody.velocity = new Vector2 ( rigidbody.velocity.x,(-1.3f) * jumpHeight);
+        }
+    }
 
     private void MovePlayer()
     {
@@ -117,7 +132,6 @@ public class PlayerController : MonoBehaviour
         playerAnimator.SetBool("doubleJump", doubleJumped);
         playerAnimator.SetBool("isDabbing", isDabbing);
     }
-
 
     private void Jump()
     {
