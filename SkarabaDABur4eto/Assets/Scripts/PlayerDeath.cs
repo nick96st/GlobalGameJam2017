@@ -6,6 +6,9 @@ public class PlayerDeath : MonoBehaviour
 {
     [SerializeField]
     LevelManager levelManager;
+	[SerializeField]
+	Statistic statistic;
+
 
 	void Start ()
     {
@@ -23,6 +26,7 @@ public class PlayerDeath : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             levelManager.RespawnPlayer();
+			statistic.addDeath ();
         }
     }
 }
