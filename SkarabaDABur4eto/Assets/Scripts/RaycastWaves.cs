@@ -75,7 +75,7 @@ public class RaycastWaves : MonoBehaviour
 
         // float shootAngle = Mathf
         Debug.Log(angle);
-        playerController.SetFloat("ShootingARM", hei)
+        //playerController.SetFloat("ShootingARM", hei)
         GameObject wep;
         if (hit.collider != null && !hit.collider.CompareTag("Player"))
         {
