@@ -36,14 +36,16 @@ public class BreakingGlass : MonoBehaviour,GameBlockMatI {
  //               }
 
   IEnumerator GlassBreak() {
-    Destroy(Glass);
     ParticleGlass = Instantiate(ParticleGlassPrefab);
+    ParticleGlass.transform.position = Glass.transform.position;
+    Destroy(Glass);
     yield return new WaitForSeconds(0.3f);
     Destroy(ParticleGlass);
     }
 
   public void HitObject() {
     if(!isHit) {
+      isHit = true;
       StartCoroutine("GlassBreak");
     }
   }
