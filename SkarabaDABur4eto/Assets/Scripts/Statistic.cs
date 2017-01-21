@@ -10,7 +10,12 @@ public class Statistic : MonoBehaviour {
 	int starCounter;
 	[SerializeField]
 	int deathCounter;
-
+	[SerializeField]
+	Text timerText;
+	[SerializeField]
+	float secondsCounter;
+	[SerializeField]
+	int minuteCounter;
 
 	// Use this for initialization
 	void Start () {
@@ -19,7 +24,7 @@ public class Statistic : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		UpdateTimerUI ();
 	}
 
 	public void starCollected() {
@@ -28,6 +33,15 @@ public class Statistic : MonoBehaviour {
 		
 	public void addDeath() {
 		deathCounter++;
+	}
+
+	public void UpdateTimerUI() {
+		secondsCounter += Time.deltaTime;
+		timerText.text = minuteCounter + "m:" + (int)secondsCounter + "s";
+		if (secondsCounter >= 60) {
+			secondsCounter = 0;
+			minuteCounter++;
+		}
 	}
 		
 }
