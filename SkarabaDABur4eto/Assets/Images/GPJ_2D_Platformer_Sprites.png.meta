@@ -1,6 +1,10 @@
 fileFormatVersion: 2
 guid: 879633b467ab5ed4d949ec6c704e680d
+<<<<<<< HEAD
 timeCreated: 1484955615
+=======
+timeCreated: 1484965447
+>>>>>>> 47cfdf2d672d964cf3850672ac679b443b586aff
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -11,7 +15,11 @@ TextureImporter:
     21300008: Player_move2
     21300010: Life
     21300012: StagePortal
+<<<<<<< HEAD
     21300014: Weapon
+=======
+    21300014: CollectibleStar
+>>>>>>> 47cfdf2d672d964cf3850672ac679b443b586aff
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -74,6 +82,14 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 1
+  - buildTarget: WebGL
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -169,12 +185,21 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
+<<<<<<< HEAD
       name: Weapon
       rect:
         serializedVersion: 2
         x: 2
         y: 101
         width: 9
+=======
+      name: CollectibleStar
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 26
+        width: 5
+>>>>>>> 47cfdf2d672d964cf3850672ac679b443b586aff
         height: 5
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
