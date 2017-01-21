@@ -13,6 +13,7 @@ public class DestroyWaves : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Environment"))
         {
+            collision.gameObject.GetComponent<GameBlockMatI>().HitObject();
             Destroy(this.gameObject);
         }
     }

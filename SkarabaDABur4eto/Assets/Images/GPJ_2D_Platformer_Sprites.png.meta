@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 879633b467ab5ed4d949ec6c704e680d
-timeCreated: 1485005531
+timeCreated: 1485013444
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -10,6 +10,7 @@ TextureImporter:
     21300006: Spikes
     21300008: Life
     21300010: Collectible
+    21300012: End
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -148,6 +149,19 @@ TextureImporter:
         y: 25
         width: 6
         height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: End
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 46
+        width: 29
+        height: 31
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

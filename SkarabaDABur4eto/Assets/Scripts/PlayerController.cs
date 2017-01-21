@@ -27,11 +27,27 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     Animator playerAnimator;
 
+
+    private Rigidbody2D rigidbody;
+
+    private void Start()
+    {
+        rigidbody = this.gameObject.GetComponent<Rigidbody2D>();
+    }
     private void Update()
     {
         CheckForGroundCollision();
         MovePlayer();
     } 
+
+    private void FixedUpdate()
+    {
+        if (rigidbody.velocity.y < (-1.3f)*jumpHeight)
+        {
+            rigidbody.velocity = new Vector2 ( rigidbody.velocity.x,(-1.3f) * jumpHeight);
+        }
+    }
+
 
     private void MovePlayer()
     {
