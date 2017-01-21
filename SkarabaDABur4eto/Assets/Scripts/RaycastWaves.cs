@@ -17,6 +17,9 @@ public class RaycastWaves : MonoBehaviour
     [SerializeField]
     GameObject weaponToThrow;
 
+    [SerializeField]
+    Animator playerController;
+
     void Start ()
     {
         if (GetComponent<Transform>().FindChild("FirePoint") != null)
@@ -49,13 +52,18 @@ public class RaycastWaves : MonoBehaviour
         Vector2 mousePosition = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x,
                                             Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
 
-        Vector2 firePointPosition = new Vector2(firePoint.position.x, firePoint.position.y);
+        Vector2 mousePos = Input.mousePosition;
+
+        Vector2 firePointPosition =firePoint.position;
         Quaternion firePointRotation = firePoint.rotation;
 
         RaycastHit2D hit = Physics2D.Raycast(firePointPosition, mousePosition - firePointPosition, 100.0f, whatToHit);
-        Debug.DrawLine(firePointPosition, (mousePosition - firePointPosition) * 100, Color.cyan);
+        //Debug.DrawLine(firePointPosition, (mousePosition - firePointPosition) * 100, Color.cyan);
 
-        float angle = Mathf.Atan2(mousePosition.y, mousePosition.x) * Mathf.Rad2Deg;
+        float x = mousePos.x - firePointPosition.x;
+        float y = mousePos.y - firePointPosition.y;
+
+        float angle = Mathf.Atan2(y, x) * Mathf.Rad2Deg;
 
         Quaternion rotation = Quaternion.Euler(new Vector3(0, 0, angle));
 
@@ -65,30 +73,33 @@ public class RaycastWaves : MonoBehaviour
             Debug.Log("You hit " + hit.collider.name);
         }
 
+        // float shootAngle = Mathf
         Debug.Log(angle);
-
+        playerController.SetFloat("ShootingARM", hei)
         GameObject wep;
         if (hit.collider != null && !hit.collider.CompareTag("Player"))
         {
             for (int i = 0; i < 3; i++)
             {
-                wep = Instantiate(weaponToThrow, firePointPosition, rotation);
+                wep = Instantiate(weaponToThrow, firePointPosition, Quaternion.identity);
                 wep.GetComponent<Rigidbody2D>().gravityScale = 0.0f;
 
                 Vector2 direction = mousePosition - firePointPosition;
                 wep.GetComponent<Rigidbody2D>().velocity = direction * fireRate;
             }
         }
+        /*
         else if ((angle < 130 && angle > -170))
         {
             for (int i = 0; i < 3; i++)
             {
-                wep = Instantiate(weaponToThrow, firePointPosition, rotation);
+                wep = Instantiate(weaponToThrow, firePointPosition, Quaternion.identity);
                 wep.GetComponent<Rigidbody2D>().gravityScale = 0.0f;
 
                 Vector2 direction = mousePosition - firePointPosition;
                 wep.GetComponent<Rigidbody2D>().velocity = direction * fireRate;
             }
         }
+        */
     }
 }
