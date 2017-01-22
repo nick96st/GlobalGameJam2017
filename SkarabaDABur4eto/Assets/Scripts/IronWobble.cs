@@ -4,14 +4,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class IronWobble : MonoBehaviour,GameBlockMatI {
+  private AudioSource source;
+  private AudioClip audio;
 
-  LinkedList<GameObject> neighbors;
+    LinkedList<GameObject> neighbors;
   [SerializeField]
   bool isHorizontalType;
   [SerializeField]
   float pushPower;
 
-  void OnTriggerEnter2D(Collider2D other) {
+    private void Awake()
+    {
+        source = this.GetComponent<AudioSource>();
+    }
+
+    void OnTriggerEnter2D(Collider2D other) {
     if(other.gameObject.tag == "Moveable") {
       neighbors.AddFirst(other.gameObject);
     }
@@ -29,7 +36,8 @@ public class IronWobble : MonoBehaviour,GameBlockMatI {
 
 
   public void HitObject() {
-
+        source.Stop();
+        source.Play();
     foreach( GameObject i in neighbors) {
       Rigidbody2D curRigidBody;
       curRigidBody = i.GetComponent<Rigidbody2D>();

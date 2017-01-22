@@ -17,9 +17,13 @@ public class LevelManager : MonoBehaviour
 
     GameObject restartUI;
 
+    private AudioClip audio;
+    private AudioSource source;
+
     private void Awake()
     {
         restartUI = GameObject.Find("RestartUI");
+        source = this.GetComponent<AudioSource>();
     }
 
     void Start ()
@@ -31,7 +35,7 @@ public class LevelManager : MonoBehaviour
         if (FindObjectOfType<CameraController>() != null)
             cameraController = FindObjectOfType<CameraController>();
 
-        restartUI.SetActive(false);
+        source.PlayOneShot(audio);
     }
 
     public void RespawnPlayer()
@@ -57,8 +61,7 @@ public class LevelManager : MonoBehaviour
 
     public void RestartLevel()
     {
-        Debug.Log("RESTARTING LEVEL...");
-        restartUI.SetActive(false);
+        Debug.Log("Level Restart!");
         playerController.GetComponent<Transform>().position = currentCheckPoint.GetComponent<Transform>().position;
         playerController.enabled = true;
         playerController.GetComponent<Renderer>().enabled = true;
