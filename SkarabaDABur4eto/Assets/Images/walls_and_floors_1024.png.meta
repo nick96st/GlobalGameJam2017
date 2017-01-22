@@ -1,6 +1,10 @@
 fileFormatVersion: 2
 guid: 0d9502cda95f4f84a8ecfbe5ffc3f031
+<<<<<<< HEAD
 timeCreated: 1485089401
+=======
+timeCreated: 1485079959
+>>>>>>> b7d45d348be4a1926466ee239f18bee349af1b00
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -8,8 +12,12 @@ TextureImporter:
     21300002: wallMid
     21300004: wallSide
     21300006: wallUp
+<<<<<<< HEAD
     21300008: walls_and_floors_1024_0
     21300010: Side
+=======
+    21300008: side
+>>>>>>> b7d45d348be4a1926466ee239f18bee349af1b00
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -33,7 +41,7 @@ TextureImporter:
   textureFormat: 1
   maxTextureSize: 2048
   textureSettings:
-    filterMode: -1
+    filterMode: 2
     aniso: -1
     mipBias: -1
     wrapMode: 1
@@ -65,12 +73,13 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
   - buildTarget: Standalone
-    maxTextureSize: 2048
-    textureFormat: -1
+    maxTextureSize: 1024
+    textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
+<<<<<<< HEAD
     overridden: 0
   - buildTarget: WebGL
     maxTextureSize: 2048
@@ -80,6 +89,9 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+=======
+    overridden: 1
+>>>>>>> b7d45d348be4a1926466ee239f18bee349af1b00
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -136,6 +148,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
+<<<<<<< HEAD
       name: walls_and_floors_1024_0
       rect:
         serializedVersion: 2
@@ -156,6 +169,15 @@ TextureImporter:
         y: 77
         width: 213
         height: 500
+=======
+      name: side
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 79
+        width: 147
+        height: 501
+>>>>>>> b7d45d348be4a1926466ee239f18bee349af1b00
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

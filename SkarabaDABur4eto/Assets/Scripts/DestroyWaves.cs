@@ -11,12 +11,13 @@ public class DestroyWaves : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Environment"))
+        if (collision.gameObject != null && !collision.gameObject.CompareTag("Finish"))
         {
             if (collision.gameObject.GetComponent<GameBlockMatI>() != null)
                 collision.gameObject.GetComponent<GameBlockMatI>().HitObject();
             else
                 Debug.LogError("Bro, add the GameBlockMatI (interfaced) script.");
+
             Destroy(this.gameObject);
         }
         else if (collision.gameObject.CompareTag("Moveable"))
