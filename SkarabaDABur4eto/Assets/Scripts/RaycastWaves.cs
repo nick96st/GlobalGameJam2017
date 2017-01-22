@@ -22,6 +22,8 @@ public class RaycastWaves : MonoBehaviour
 
     bool isShooting;
 
+    float waveSpawnTimer = 2.0f;
+
     void Start ()
     {
         if (GetComponent<Transform>().FindChild("FirePoint") != null)
@@ -103,27 +105,18 @@ public class RaycastWaves : MonoBehaviour
         Quaternion rotation = Quaternion.Euler(new Vector3(0, 0, angle));
 
         GameObject wep;
+        Vector2 direction = mousePosition - firePointPosition;
         if (hit.collider != null && !hit.collider.CompareTag("Player"))
         {
-            for (int i = 0; i < 3; i++)
-            {
-                wep = Instantiate(weaponToThrow, firePointPosition, rotation);
-                wep.GetComponent<Rigidbody2D>().gravityScale = 0.0f;
-
-                Vector2 direction = mousePosition - firePointPosition;
-                wep.GetComponent<Rigidbody2D>().velocity = direction * fireRate;
-            }
+            wep = Instantiate(weaponToThrow, firePointPosition, rotation);
+            wep.GetComponent<Rigidbody2D>().gravityScale = 0.0f;
+            wep.GetComponent<Rigidbody2D>().velocity = direction * fireRate;
         }
         else
         {
-            for (int i = 0; i < 3; i++)
-            {
-                wep = Instantiate(weaponToThrow, firePointPosition, rotation);
-                wep.GetComponent<Rigidbody2D>().gravityScale = 0.0f;
-
-                Vector2 direction = mousePosition - firePointPosition;
-                wep.GetComponent<Rigidbody2D>().velocity = direction * fireRate;
-            }
+            wep = Instantiate(weaponToThrow, firePointPosition, rotation);
+            wep.GetComponent<Rigidbody2D>().gravityScale = 0.0f;
+            wep.GetComponent<Rigidbody2D>().velocity = direction * fireRate;
         }
 
         if (isShooting)
