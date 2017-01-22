@@ -13,7 +13,10 @@ public class DestroyWaves : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Environment"))
         {
-            collision.gameObject.GetComponent<GameBlockMatI>().HitObject();
+            if (collision.gameObject.GetComponent<GameBlockMatI>() != null)
+                collision.gameObject.GetComponent<GameBlockMatI>().HitObject();
+            else
+                Debug.LogError("Bro, add the GameBlockMatI (interfaced) script.");
             Destroy(this.gameObject);
         }
         else if (collision.gameObject.CompareTag("Moveable"))
@@ -24,7 +27,10 @@ public class DestroyWaves : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("mPlatform"))
         {
-            // collision.gameObject.GetComponent<GameBlockMatI>().HitObject();
+            if (collision.gameObject.GetComponent<GameBlockMatI>() != null)
+                collision.gameObject.GetComponent<GameBlockMatI>().HitObject();
+            else
+                Debug.LogError("Bro, add the GameBlockMatI (interfaced) script.");
             Destroy(this.gameObject);
         }
     }
