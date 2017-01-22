@@ -83,13 +83,13 @@ public class RaycastWaves : MonoBehaviour
 
         // checker so it does shoot at himself
 
-        if(angle>=-90 && angle <=90)
+        if(angle >=- 90 && angle <= 90)
         {
             if (this.GetComponent<Transform>().localRotation.y != 0)
             {
                 isShooting = false;
                 return;
-            }   
+            }
         }
         else
         {
@@ -99,7 +99,6 @@ public class RaycastWaves : MonoBehaviour
                 return;
             }
         }
-        // float angleSin = Mathf.Sin(angle);
 
         Quaternion rotation = Quaternion.Euler(new Vector3(0, 0, angle));
 
@@ -115,11 +114,11 @@ public class RaycastWaves : MonoBehaviour
                 wep.GetComponent<Rigidbody2D>().velocity = direction * fireRate;
             }
         }
-        else if ((angle < 90 && angle > -90))
+        else
         {
             for (int i = 0; i < 3; i++)
             {
-                wep = Instantiate(weaponToThrow, firePointPosition, Quaternion.identity);
+                wep = Instantiate(weaponToThrow, firePointPosition, rotation);
                 wep.GetComponent<Rigidbody2D>().gravityScale = 0.0f;
 
                 Vector2 direction = mousePosition - firePointPosition;
