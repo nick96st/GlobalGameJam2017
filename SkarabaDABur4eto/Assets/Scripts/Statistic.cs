@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class Statistic : MonoBehaviour {
 
 	[SerializeField]
+	bool mainMenuOn;
+
+	[SerializeField]
 	int starCounter;
 
 	[SerializeField]
@@ -51,7 +54,14 @@ public class Statistic : MonoBehaviour {
 	void Update () {
 		UpdateTimerUI ();
 	}
-
+	public void menuShift(){
+		if (mainMenuOn == true) {
+			mainMenuOn = false;
+		}
+		else {
+			mainMenuOn = true;
+		}
+	}
 	public bool checkpointStatus(){
 		return checkpointReached;
 	}
@@ -105,24 +115,26 @@ public class Statistic : MonoBehaviour {
 	}
 
 	public void UpdateTimerUI() {
-		secondsCounter += Time.deltaTime;
-		if (secondsCounter >= 60) {
-			secondsCounter = 0;
-			minuteCounter++;
+		if (!mainMenuOn) {
+			secondsCounter += Time.deltaTime;
+			if (secondsCounter >= 60) {
+				secondsCounter = 0;
+				minuteCounter++;
+			}
+			timerText.text = "Time: ";
+
+			if (minuteCounter < 10) {
+				timerText.text += "0";
+			}
+
+			timerText.text += minuteCounter + ":";
+
+			if (secondsCounter < 10) {
+				timerText.text += "0";
+			}
+			timerText.text += (int)secondsCounter;
+
 		}
-		timerText.text = "Time: ";
-
-		if (minuteCounter < 10) {
-			timerText.text += "0";
-		}
-
-		timerText.text += minuteCounter + ":";
-
-		if (secondsCounter < 10) {
-			timerText.text += "0";
-		}
-		timerText.text += (int)secondsCounter;
-
 	}
 		
 }
