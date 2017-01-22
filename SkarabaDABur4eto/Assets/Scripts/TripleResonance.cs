@@ -17,17 +17,17 @@ public class TripleResonance : MonoBehaviour,GameBlockMatI {
   [SerializeField]
   int resonatePower1;
   [SerializeField]
-  [Range(0f,1.5f)]
+  [Range(0f,6.0f)]
   float delay1;
   [SerializeField]
   int resonatePower2;
   [SerializeField]
-  [Range(0f, 1.5f)]
+  [Range(0f, 6.0f)]
   float delay2;
   [SerializeField]
   int resonatePower3;
   [SerializeField]
-  [Range(0f, 1.5f)]
+  [Range(0f, 9.0f)]
   float delay3;
   [SerializeField]
   int ticksDecay;
