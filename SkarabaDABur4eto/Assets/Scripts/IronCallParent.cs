@@ -9,6 +9,7 @@ public class IronCallParent : MonoBehaviour, GameBlockMatI
     public void HitObject()
     {
         parent.GetComponent<GameBlockMatI>().HitObject();
+
     }
 	// Use this for initialization
 	void Start () {

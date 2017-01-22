@@ -17,13 +17,6 @@ public class PlayerHealth : MonoBehaviour
 
     int lives;
 
-    GameObject restartUI;
-
-    private void Awake()
-    {
-        restartUI = GameObject.Find("RestartUI");
-    }
-
     private void Start()
     {
         // Get PlayerController script
@@ -46,11 +39,10 @@ public class PlayerHealth : MonoBehaviour
 
         if (lives <= 0)
         {
-            restartUI.SetActive(true);
             playerController.enabled = false;
             playerController.GetComponent<Renderer>().enabled = false;
             cameraController.isFollowing = false;
-            lives = 3;
+            levelManager.RestartLevel();
         }
     }
 

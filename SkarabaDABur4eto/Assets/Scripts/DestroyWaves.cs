@@ -17,6 +17,7 @@ public class DestroyWaves : MonoBehaviour
                 collision.gameObject.GetComponent<GameBlockMatI>().HitObject();
             else
                 Debug.LogError("Bro, add the GameBlockMatI (interfaced) script.");
+
             Destroy(this.gameObject);
         }
         else if (collision.gameObject.CompareTag("Moveable"))
