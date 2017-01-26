@@ -16,6 +16,6 @@ public class MainMenu : MonoBehaviour
 	void Update ()
     {
         if (Input.GetKeyDown(KeyCode.Space))
-            SceneManager.LoadScene("Level01", LoadSceneMode.Single);
+            SceneManager.LoadScene("AntonLevel1", LoadSceneMode.Single);
     }
 }

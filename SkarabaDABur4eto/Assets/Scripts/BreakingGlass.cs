@@ -10,12 +10,18 @@ public class BreakingGlass : MonoBehaviour,GameBlockMatI {
   public GameObject ParticleGlassPrefab;
   GameObject ParticleGlass;
   public GameObject Glass;
-  //int count;
-  //int max = 25;
-	// Use this for initialization
+    AudioSource source;
+    AudioClip audio;
+    //int count;
+    //int max = 25;
+    // Use this for initialization
+    private void Awake()
+    {
+        source = this.GetComponent<AudioSource>();
+    }
 	void Start () {
-		
-	}
+        
+    }
 	
 	//// Update is called once per frame
 	//void Update () {
@@ -40,7 +46,8 @@ public class BreakingGlass : MonoBehaviour,GameBlockMatI {
     ParticleGlass.transform.position = Glass.transform.position;
         ParticleGlass.transform.localScale = Glass.transform.lossyScale;
     Destroy(Glass);
-    yield return new WaitForSeconds(0.3f);
+        source.PlayOneShot(audio);
+        yield return new WaitForSeconds(0.3f);
     Destroy(ParticleGlass);
         this.gameObject.GetComponent<BoxCollider2D>().enabled = false;
     }
