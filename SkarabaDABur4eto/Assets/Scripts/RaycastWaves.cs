@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent (typeof(AudioController))]
 public class RaycastWaves : MonoBehaviour
 {
     [SerializeField]
-    float fireRate;
+    private float fireRate;
 
     public float Damage;
     public LayerMask whatToHit;
 
-    float timeToFire = 0.0f;
+    private float timeToFire = 0.0f;
 
-    Transform firePoint;
+    private Transform firePoint;
 
     [SerializeField]
     GameObject weaponToThrow;
@@ -20,19 +21,19 @@ public class RaycastWaves : MonoBehaviour
     [SerializeField]
     Animator playerController;
 
-    bool isShooting;
+    private bool isShooting;
 
-    float waveSpawnTimer = 2.0f;
+    private float waveSpawnTimer = 2.0f;
 
-    public AudioClip audio;
-    private AudioSource source;
+    [SerializeField]
+    AudioClip gunAudio;
 
     void Start ()
     {
         if (GetComponent<Transform>().FindChild("FirePoint") != null)
             firePoint = GetComponent<Transform>().FindChild("FirePoint");
         else
-            Debug.LogError("No such a child object was found.");
+            Debug.LogError("Child game object FirePoint wasn't found.");
     }
 	
 	void Update ()
@@ -69,10 +70,6 @@ public class RaycastWaves : MonoBehaviour
     private void Shoot()
     {
         isShooting = true;
-        // playerController.SetBool("isShooting", isShooting);
-
-        source = GetComponent<AudioSource>();
-        source.PlayOneShot(audio);
 
         Vector2 mousePosition = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x,
                                             Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
@@ -127,6 +124,9 @@ public class RaycastWaves : MonoBehaviour
 
         if (isShooting)
         {
+            AudioController audioController = GetComponent<AudioController>();
+            audioController.PlayFromMultipleClips(gunAudio);
+
             playerController.SetFloat("Angle", angle);
         }
 

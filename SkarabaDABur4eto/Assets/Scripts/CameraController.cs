@@ -26,9 +26,9 @@ public class CameraController : MonoBehaviour
     {
         if (isFollowing)
         {
-            this.GetComponent<Transform>().position = Vector3.Lerp(this.GetComponent<Transform>().position,
-                new Vector3(target.position.x + xOffset, target.position.y + yOffset, this.GetComponent<Transform>().position.z),
-                cameraSpeed * Time.deltaTime);
+            GetComponent<Transform>().position = Vector3.Lerp(GetComponent<Transform>().position,
+                          new Vector3(target.position.x + xOffset, target.position.y + yOffset, GetComponent<Transform>().position.z),
+                          cameraSpeed * Time.deltaTime);
         }
 	}
 }

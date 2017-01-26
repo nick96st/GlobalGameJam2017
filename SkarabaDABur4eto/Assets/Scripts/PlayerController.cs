@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent (typeof(AudioController))]
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
@@ -32,6 +33,9 @@ public class PlayerController : MonoBehaviour
     float height;
     
     private Rigidbody2D rigidbody;
+
+    [SerializeField]
+    AudioClip jumpAudio;
 
     private void Start()
     {
@@ -135,7 +139,9 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
-        this.GetComponent<Rigidbody2D>().velocity = new Vector2(this.GetComponent<Rigidbody2D>().velocity.x, jumpHeight);
+        GetComponent<Rigidbody2D>().velocity = new Vector2(this.GetComponent<Rigidbody2D>().velocity.x, jumpHeight);
+        AudioController audioController = GetComponent<AudioController>();
+        audioController.PlayFromMultipleClips(jumpAudio);
     }
 
     private void CheckForGroundCollision()

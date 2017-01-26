@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent (typeof(AudioController))]
 public class LevelManager : MonoBehaviour
 {
     public GameObject currentCheckPoint;
@@ -17,13 +18,9 @@ public class LevelManager : MonoBehaviour
 
     GameObject restartUI;
 
-    private AudioClip audio;
-    private AudioSource source;
-
     private void Awake()
     {
         restartUI = GameObject.Find("RestartUI");
-        source = this.GetComponent<AudioSource>();
     }
 
     void Start ()
@@ -35,7 +32,8 @@ public class LevelManager : MonoBehaviour
         if (FindObjectOfType<CameraController>() != null)
             cameraController = FindObjectOfType<CameraController>();
 
-        source.PlayOneShot(audio);
+        AudioController audioController = GetComponent<AudioController>();
+        audioController.PlayBackgroundMusic();
     }
 
     public void RespawnPlayer()

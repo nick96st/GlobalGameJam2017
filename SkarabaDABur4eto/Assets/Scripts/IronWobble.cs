@@ -3,79 +3,67 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IronWobble : MonoBehaviour,GameBlockMatI {
-  private AudioSource source;
-  private AudioClip audio;
-
+[RequireComponent (typeof(AudioController))]
+public class IronWobble : MonoBehaviour, GameBlockMatI
+{
     LinkedList<GameObject> neighbors;
-  [SerializeField]
-  bool isHorizontalType;
-  [SerializeField]
-  float pushPower;
+    [SerializeField]
+    private bool isHorizontalType;
+    [SerializeField]
+    private float pushPower;
 
-    private void Awake()
+    void OnTriggerEnter2D(Collider2D other)
     {
-        source = this.GetComponent<AudioSource>();
+        if(other.gameObject.CompareTag("Moveable"))
+            neighbors.AddFirst(other.gameObject);
     }
 
-    void OnTriggerEnter2D(Collider2D other) {
-    if(other.gameObject.tag == "Moveable") {
-      neighbors.AddFirst(other.gameObject);
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if(other.gameObject.CompareTag("Moveable"))
+            neighbors.Remove(other.gameObject);
     }
-  }
 
-  //void OnCollisionStay2D(Collision2D other) {
-  //  Debug.Log("collides");
+    public void HitObject()
+    {
+        AudioController audioController = GetComponent<AudioController>();
+        audioController.PlaySoundEffect();
 
-  //}
-  void OnTriggerExit2D(Collider2D other) {
-    if(other.gameObject.tag == "Moveable") {
-      neighbors.Remove(other.gameObject);
-    }
-  }
+        foreach (GameObject i in neighbors)
+        {
+            Rigidbody2D curRigidBody;
+            curRigidBody = i.GetComponent<Rigidbody2D>();
 
-
-  public void HitObject() {
-        source.Stop();
-        source.Play();
-    foreach( GameObject i in neighbors) {
-      Rigidbody2D curRigidBody;
-      curRigidBody = i.GetComponent<Rigidbody2D>();
-      if( curRigidBody != null) {
-
-        if (isHorizontalType) {
-          if (this.gameObject.transform.position.x < i.transform.position.x) {
-            curRigidBody.velocity = new Vector2(curRigidBody.velocity.x + pushPower, curRigidBody.velocity.y);
-          } else {
-            curRigidBody.velocity = new Vector2(curRigidBody.velocity.x - pushPower, curRigidBody.velocity.y);
-          }
+            if(curRigidBody != null)
+            {
+                if (isHorizontalType)
+                {
+                    if (GetComponent<Transform>().position.x < i.GetComponent<Transform>().position.x)
+                        curRigidBody.velocity = new Vector2(curRigidBody.velocity.x + pushPower, curRigidBody.velocity.y);
+                    else
+                        curRigidBody.velocity = new Vector2(curRigidBody.velocity.x - pushPower, curRigidBody.velocity.y);
+                }
+            }
+            else
+            {
+                if (GetComponent<Transform>().position.y < i.GetComponent<Transform>().position.y)
+                    curRigidBody.velocity = new Vector2(curRigidBody.velocity.x, curRigidBody.velocity.y + pushPower);
+                else
+                    curRigidBody.velocity = new Vector2(curRigidBody.velocity.x, curRigidBody.velocity.y - pushPower);
+            }
         }
-        else {
-          if (this.gameObject.transform.position.y < i.transform.position.y) {
-            curRigidBody.velocity = new Vector2(curRigidBody.velocity.x, curRigidBody.velocity.y + pushPower);
-
-          } else {
-            curRigidBody.velocity = new Vector2(curRigidBody.velocity.x, curRigidBody.velocity.y - pushPower);
-          }
-        }
-      }
+        return;
     }
+ 
 
-    return;
-  }
+    // Use this for initialization
+    void Start ()
+    {
+        neighbors = new LinkedList<GameObject>();
 
-  // Use this for initialization
-  void Start () {
-    neighbors = new LinkedList<GameObject>();
-    if(!isHorizontalType) {
-      this.gameObject.GetComponent<BoxCollider2D>().size = new Vector2(0.6f, 1.4f);
-    } else {
-      this.gameObject.GetComponent<BoxCollider2D>().size = new Vector2(1.4f, 0.6f);
-    }
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+        if(!isHorizontalType)
+            GetComponent<BoxCollider2D>().size = new Vector2(3.0f, 4.0f);
+        else
+            GetComponent<BoxCollider2D>().size = new Vector2(4.0f, 3.0f);
 	}
 }

@@ -15,7 +15,7 @@ public class PlayerHealth : MonoBehaviour
 
     public List<Image> Lives;
 
-    int lives;
+    private int lives;
 
     private void Start()
     {

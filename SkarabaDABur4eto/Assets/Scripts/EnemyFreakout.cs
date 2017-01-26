@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent (typeof(AudioController))]
 public class EnemyFreakout : MonoBehaviour, GameBlockMatI
 {
     [SerializeField]
@@ -14,7 +15,7 @@ public class EnemyFreakout : MonoBehaviour, GameBlockMatI
 
     void Start()
     {
-        body = this.GetComponent<Rigidbody2D>();
+        body = GetComponent<Rigidbody2D>();
     }
 
     public void Update()
@@ -24,10 +25,11 @@ public class EnemyFreakout : MonoBehaviour, GameBlockMatI
 
     public void HitObject()
     {
-        var source = this.GetComponent<AudioSource>();
+        AudioController audioController = GetComponent<AudioController>();
+        audioController.PlaySoundEffect();
+
         enemyAnimator.SetBool("isHit", true);
         moveSpeed = 3.0f;
-        source.Stop();
-        source.Play();
+
     }
 }
